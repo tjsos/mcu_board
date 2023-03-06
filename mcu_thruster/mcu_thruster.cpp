@@ -1,5 +1,5 @@
 /*
-Source file for MCU board.
+Source file for MCU board PWM.
 SOSLAB
 Author : Tony Jacob, tony.jacob@uri.edu
 */

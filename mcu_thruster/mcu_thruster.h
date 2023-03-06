@@ -1,4 +1,4 @@
-/* Header for MCU board.
+/* Header for MCU board PWM.
 SOSLAB
 Author : Tony Jacob, tony.jacob@uri.edu
 */
