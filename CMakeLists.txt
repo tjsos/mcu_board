@@ -1,0 +1,3 @@
+add_subdirectory(input_voltage_sensor)
+add_subdirectory(mcu_thruster)
+add_subdirectory(parser)
