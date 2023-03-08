@@ -2,7 +2,10 @@
 SOSLAB
 Author : Tony Jacob, tony.jacob@uri.edu
 */
-#define OUTPUT_PIN 20 //6B //J3
+
+#include "pico/stdlib.h"
+#include "hardware/pwm.h"
+#include <stdio.h>
 
 int command = 50;
 /////Global Variables
@@ -51,7 +54,7 @@ class Motor{
             pwm_init(slice, &config, true);
         }
 
-        void setCommand(int motorPin, int command){
+        void SetCommand(int motorPin, int command){
             if (this->motortype == 0){
                 float millis = map(command, in_min, in_max, out_min_servo, out_max_servo);
                 pwm_set_gpio_level(motorPin, (millis/time_period)*wrap_value);
@@ -68,12 +71,12 @@ class Motor{
             return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
         }
 
-        void sweep(){
+        void Sweep(){
             if (this->motortype == 0){
                 command += (direction)?1:-1;
                 if(command >= 100) direction = false;
                 if(command <= -100) direction = true;
-                setCommand(OUTPUT_PIN, command);
+                SetCommand(PWM_PIN, command);
             }    
         }
 };

@@ -2,14 +2,10 @@
 SOSLAB
 Author : Tony Jacob, tony.jacob@uri.edu
 */
+#include <stdio.h>
+#include "pico/stdlib.h"
+#include "hardware/uart.h"
 
-#define UART_ID uart1
-#define BAUD_RATE 115200
-
-#define UART_TX_PIN 8
-#define UART_RX_PIN 9
-
-#define INSTRUCTION "$0100"
 
 class PiInterface{
     public:
@@ -24,14 +20,16 @@ class PiInterface{
         gpio_set_function(rx_pin, GPIO_FUNC_UART);
     }
 
-    void put_string(const char* instruction)
+    void PutString(const char* instruction)
     {
         uart_puts(this->uart_id, instruction);
     }
 
-    char read_char(){
+    char ReadChar(){
+        char data;
         if (uart_is_readable(this->uart_id)){
-            return uart_getc(this->uart_id);
+            data =  uart_getc(this->uart_id);
         }
+        return data;
     }
 };
