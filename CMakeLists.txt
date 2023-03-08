@@ -25,6 +25,4 @@ add_compile_options(-Wall
 	-Wno-maybe-uninitialized
 	)
 
-add_subdirectory(input_voltage_sensor)
-add_subdirectory(mcu_thruster)
-add_subdirectory(parser)
+add_subdirectory(main)
