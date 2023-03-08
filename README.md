@@ -10,5 +10,5 @@ Codebase for the MCU board, includes PWM, ADC etc.
 - `export PICO_SDK_PATH=../../pico-sdk`
 - `cmake ..`
 - `make`
-- Change directory into the app you want to compile and `make -j4`.
-- Drag and drop the .uf2 file into the memory of the pico.
+- Change directory into the main and `make -j4`.
+- Drag and drop the main.uf2 file into the memory of the pico.
