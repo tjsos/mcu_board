@@ -21,12 +21,11 @@ int main(){
         
         //Voltage Reader
         input.ReadVoltage();
-        sleep_ms(500);
 
         for (int i = 0; i<5; i++){
             char data = rs232.ReadChar();
             printf("\r\n%c\r\n",data);
-            sleep_ms(500);
+            sleep_ms(10);
         }
 
 
