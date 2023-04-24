@@ -24,6 +24,7 @@ class InputVoltageSensor{
         const float conversion_factor = 3.3f / (1<<12);
         uint16_t result_at_VB = adc_read();
         // 11 is from the voltage divide formula.
+        // The ideal voltage should be ~5V
         printf("Raw value: 0x%03x, voltage: %f V\n", result_at_VB, result_at_VB * conversion_factor * 11);
     }
 };

@@ -36,13 +36,15 @@ class Motor{
     public:
         //0 for Servo, 1 for thruster.
         int motortype;
+        int motorPin;
 
         //For Sweep
-        bool direction = true;
+        bool direction = false;
 
         //Constructor
         Motor(int motorPin, int motortype){
             this->motortype = motortype;
+            this->motorPin = motorPin;
             gpio_set_function(motorPin, GPIO_FUNC_PWM);
 
             uint slice = pwm_gpio_to_slice_num(motorPin);
@@ -54,15 +56,16 @@ class Motor{
             pwm_init(slice, &config, true);
         }
 
-        void SetCommand(int motorPin, int command){
+        void SetCommand(int command){
             if (this->motortype == 0){
+                // printf("%i\n", command);
                 float millis = map(command, in_min, in_max, out_min_servo, out_max_servo);
-                pwm_set_gpio_level(motorPin, (millis/time_period)*wrap_value);
+                pwm_set_gpio_level(this->motorPin, (millis/time_period)*wrap_value);
                 sleep_ms(10);
             }
             else if (this->motortype == 1){
                 float millis = map(command, in_min, in_max, out_min_thruster, out_max_thruster);
-                pwm_set_gpio_level(motorPin, (millis/time_period)*wrap_value);
+                pwm_set_gpio_level(this->motorPin, (millis/time_period)*wrap_value);
                 sleep_ms(10);
             }
         }
@@ -76,7 +79,7 @@ class Motor{
                 command += (direction)?1:-1;
                 if(command >= 100) direction = false;
                 if(command <= -100) direction = true;
-                SetCommand(PWM_PIN, command);
+                SetCommand(command);
             }    
         }
 };

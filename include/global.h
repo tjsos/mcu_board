@@ -8,7 +8,7 @@
 #define INSTRUCTION "$0100"
 
 //Motor
-#define PWM_PIN 20 //6B //J3
+// #define PWM_PIN 18   
 
 //InputVoltageSensor
 const int gpio = 26;
