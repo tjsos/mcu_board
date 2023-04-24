@@ -24,7 +24,7 @@ int main(){
         
         //Voltage Reader
         input.ReadVoltage();
-        sleep_ms(10);
+        sleep_ms(500);
 
         for (int i = 0; i<5; i++){
             char data = rs232.ReadChar();
